@@ -36,7 +36,7 @@ class DataSelect(DataManagement):
     def execute(self):
         try:
             files = glob.glob(self.sourceLabel.get() + '/*.' + self.rule.get())
-            k = int(self.percentageOfFiles.get()) * len(files) / 100
+            k = int(int(self.percentageOfFiles.get()) * len(files) / 100)
             files = random.sample(files, k)
             for file in files:
                 shutil.copy2(file, self.destinationLabel.get())

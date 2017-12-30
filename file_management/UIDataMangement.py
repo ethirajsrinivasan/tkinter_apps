@@ -1,6 +1,6 @@
-from Tkinter import *
-import tkFileDialog
-import tkMessageBox
+from tkinter import *
+from tkinter import messagebox
+from tkinter.filedialog import askdirectory
 from Constants import *
 from DataCopy import *
 from DataSelect import *
@@ -197,9 +197,9 @@ class UIDataManagement:
         status, msg = dataManagement.valid()
         if status:
             exStatus, exMsg = dataManagement.execute()
-            tkMessageBox.showinfo(dataManagement.getName(), exMsg)
+            messagebox.showinfo(dataManagement.getName(), exMsg)
         else:
-            tkMessageBox.showinfo('Error', msg)
+            messagebox.showinfo('Error', msg)
 
     # ----------------------------------------------------------------------
     # Triggered when cancel button is clicked in child window
@@ -212,7 +212,7 @@ class UIDataManagement:
     # selects the directory by opening the browse directory window
     # This function is called from Rename Frame
     def browseButton(self):
-        filename = tkFileDialog.askdirectory(parent=self.master)
+        filename = askdirectory(parent=self.master)
         self.folderPath.set(filename)
         self.folderLabel.delete(0, END)
         self.folderLabel.insert(0, filename)
@@ -222,7 +222,7 @@ class UIDataManagement:
     # selects the directory by opening the browse directory window
     # This function is called from Copy Frame and Select Frame
     def browseFromButton(self):
-        filename = tkFileDialog.askdirectory(parent=self.master)
+        filename = askdirectory(parent=self.master)
         self.fromFolderPath.set(filename)
         self.sourceLabel.delete(0, END)
         self.sourceLabel.insert(0, filename)
@@ -232,7 +232,7 @@ class UIDataManagement:
     # selects the directory by opening the browse directory window
     # This function is called from Copy Frame and Select Frame
     def browseToButton(self):
-        filename = tkFileDialog.askdirectory(parent=self.master)
+        filename = askdirectory(parent=self.master)
         self.destinationLabel.delete(0, END)
         self.destinationLabel.insert(0, filename)
         self.toFolderPath.set(filename)
